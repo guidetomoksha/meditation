@@ -1,12 +1,1037 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-    <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AntarYatra | Dhyan, Trataka & Japa Complete Awareness</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Tiro+Devanagari+Hindi&display=swap" rel="stylesheet">
+  <style>
+    :root[data-theme="dark"] {
+      --bg-primary: #0b0f19;
+      --bg-secondary: #131b2e;
+      --bg-card: rgba(25, 34, 56, 0.75);
+      --text-primary: #f8fafc;
+      --text-secondary: #cbd5e1;
+      --accent-gold: #f59e0b;
+      --accent-glow: rgba(245, 158, 11, 0.35);
+      --accent-saffron: #ea580c;
+      --accent-Lotus: #ec4899;
+      --accent-cyan: #06b6d4;
+      --border-color: rgba(255, 255, 255, 0.12);
+      --shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5);
+    }
+
+    :root[data-theme="light"] {
+      --bg-primary: #fffdf9;
+      --bg-secondary: #fef3c7;
+      --bg-card: rgba(255, 255, 255, 0.88);
+      --text-primary: #1e293b;
+      --text-secondary: #475569;
+      --accent-gold: #d97706;
+      --accent-glow: rgba(217, 119, 6, 0.2);
+      --accent-saffron: #c2410c;
+      --accent-Lotus: #db2777;
+      --accent-cyan: #0891b2;
+      --border-color: rgba(217, 119, 6, 0.2);
+      --shadow: 0 10px 25px -5px rgba(180, 83, 9, 0.1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', 'Tiro Devanagari Hindi', sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.7;
+      transition: background-color 0.4s ease, color 0.4s ease;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, .brand {
+      font-family: 'Cinzel', 'Tiro Devanagari Hindi', serif;
+    }
+
+    /* Language switching logic */
+    body.lang-en [data-lang="hi"] { display: none !important; }
+    body.lang-hi [data-lang="en"] { display: none !important; }
+
+    /* Navbar */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(14px);
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border-color);
+      padding: 0.9rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.3s ease;
+    }
+
+    .brand {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--accent-gold);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.8rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-primary);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent-gold);
+    }
+
+    .controls {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+    }
+
+    .btn {
+      background: var(--bg-secondary);
+      color: var(--text-primary);
+      border: 1px solid var(--border-color);
+      padding: 0.5rem 1rem;
+      border-radius: 50px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: all 0.25s ease;
+    }
+
+    .btn:hover {
+      border-color: var(--accent-gold);
+      box-shadow: 0 0 12px var(--accent-glow);
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent-gold), var(--accent-saffron));
+      color: #fff;
+      border: none;
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      min-height: 82vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 4rem 1.5rem;
+      overflow: hidden;
+    }
+
+    .hero-mandala {
+      width: 220px;
+      height: 220px;
+      margin-bottom: 1.5rem;
+      animation: spinSlow 40s linear infinite;
+      filter: drop-shadow(0 0 20px var(--accent-glow));
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      margin-bottom: 1rem;
+      background: linear-gradient(90deg, var(--accent-gold), var(--accent-Lotus), var(--accent-cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      max-width: 720px;
+      font-size: 1.15rem;
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+    }
+
+    .pill-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+    }
+
+    /* Section Containers */
+    section {
+      padding: 5rem 6%;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .section-badge {
+      display: inline-block;
+      padding: 0.3rem 1rem;
+      border-radius: 99px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      background: var(--bg-secondary);
+      color: var(--accent-gold);
+      border: 1px solid var(--border-color);
+      margin-bottom: 0.8rem;
+    }
+
+    .section-header h2 {
+      font-size: clamp(1.8rem, 3.5vw, 2.75rem);
+      margin-bottom: 0.6rem;
+    }
+
+    /* Interactive Split Layout */
+    .practice-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 2.5rem;
+      align-items: start;
+    }
+
+    @media (max-width: 920px) {
+      .practice-grid {
+        grid-template-columns: 1fr;
+      }
+      .nav-links {
+        display: none;
+      }
+    }
+
+    /* Animated Visual Box */
+    .visual-stage {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 24px;
+      padding: 2.5rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 420px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Card Grid for Details */
+    .info-cards {
+      display: grid;
+      gap: 1.25rem;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 18px;
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+      transition: transform 0.25s ease, border-color 0.25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      border-color: var(--accent-gold);
+    }
+
+    .card h3 {
+      font-size: 1.25rem;
+      color: var(--accent-gold);
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .card ul, .card ol {
+      padding-left: 1.3rem;
+      color: var(--text-secondary);
+    }
+
+    .card li {
+      margin-bottom: 0.45rem;
+    }
+
+    .warning-box {
+      border-left: 4px solid #ef4444;
+      background: rgba(239, 68, 68, 0.08);
+      padding: 1rem 1.25rem;
+      border-radius: 10px;
+      margin-top: 0.8rem;
+      font-size: 0.95rem;
+    }
+
+    /* ---------------- ANIMATION 1: DHYAN BREATHING ---------------- */
+    .dhyan-aura {
+      width: 220px;
+      height: 220px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .breath-ring {
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(6, 182, 212, 0.35), rgba(236, 72, 153, 0.05));
+      border: 1.5px solid rgba(6, 182, 212, 0.5);
+      width: 100%;
+      height: 100%;
+      animation: breatheCycle 12s ease-in-out infinite;
+    }
+
+    .breath-ring:nth-child(2) {
+      animation-delay: -4s;
+      border-color: rgba(245, 158, 11, 0.4);
+    }
+
+    .meditator-svg {
+      width: 130px;
+      height: 130px;
+      z-index: 2;
+      animation: floatY 4s ease-in-out infinite;
+    }
+
+    .breath-status {
+      margin-top: 1.8rem;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--accent-cyan);
+      letter-spacing: 1px;
+    }
+
+    /* ---------------- ANIMATION 2: TRATAKA FLAME ---------------- */
+    .trataka-dark-stage {
+      background: radial-gradient(circle at center, #1b1610 0%, #050508 100%) !important;
+      color: #f8fafc;
+    }
+
+    .candle-container {
+      position: relative;
+      width: 160px;
+      height: 240px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+    }
+
+    .flame-halo {
+      position: absolute;
+      top: 20px;
+      width: 130px;
+      height: 130px;
+      background: radial-gradient(circle, rgba(251, 191, 36, 0.45) 0%, rgba(234, 88, 12, 0.15) 50%, transparent 75%);
+      border-radius: 50%;
+      animation: haloPulse 3s infinite alternate ease-in-out;
+    }
+
+    .flame-svg {
+      width: 70px;
+      height: 110px;
+      z-index: 3;
+      transform-origin: 50% 90%;
+      animation: flameFlicker 3.5s infinite ease-in-out;
+    }
+
+    .bindu-point {
+      width: 6px;
+      height: 6px;
+      background: #ffffff;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #fff, 0 0 14px #38bdf8;
+      position: absolute;
+      top: 78px;
+      z-index: 5;
+    }
+
+    .diya-base {
+      width: 110px;
+      height: 42px;
+      background: linear-gradient(180deg, #b45309, #78350f);
+      border-radius: 10px 10px 55px 55px;
+      border-top: 3px solid #f59e0b;
+      z-index: 2;
+    }
+
+    /* ---------------- ANIMATION 3: JAPA MALA ---------------- */
+    .mala-wheel-wrap {
+      position: relative;
+      width: 240px;
+      height: 240px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .mala-svg {
+      width: 100%;
+      height: 100%;
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .mala-center-counter {
+      position: absolute;
+      text-align: center;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .mala-count-num {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--accent-gold);
+      line-height: 1;
+    }
+
+    /* Comparison Table */
+    .table-wrap {
+      overflow-x: auto;
+      background: var(--bg-card);
+      border-radius: 18px;
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    th, td {
+      padding: 1.1rem 1.25rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    th {
+      background: var(--bg-secondary);
+      color: var(--accent-gold);
+      font-weight: 700;
+    }
+
+    /* Keyframes */
+    @keyframes spinSlow {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes floatY {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @keyframes breatheCycle {
+      0%, 100% { transform: scale(0.65); opacity: 0.4; }
+      40% { transform: scale(1.25); opacity: 0.9; }
+      60% { transform: scale(1.25); opacity: 0.9; }
+    }
+
+    @keyframes flameFlicker {
+      0%, 100% { transform: scale(1) rotate(0deg); }
+      25% { transform: scale(0.98, 1.03) rotate(-1deg); }
+      50% { transform: scale(1.02, 0.97) rotate(1deg); }
+      75% { transform: scale(0.99, 1.02) rotate(-0.5deg); }
+    }
+
+    @keyframes haloPulse {
+      from { transform: scale(0.92); opacity: 0.7; }
+      to { transform: scale(1.12); opacity: 1; }
+    }
+
+    footer {
+      text-align: center;
+      padding: 3rem 1.5rem;
+      border-top: 1px solid var(--border-color);
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+  </style>
 </head>
-<body>
-    <div class="insta">
-        <div class="innerbox"></div>
+<body class="lang-en">
+
+  <!-- Header Navigation -->
+  <header>
+    <a href="#" class="brand">
+      <span>☸</span>
+      <span data-lang="en">AntarYatra</span>
+      <span data-lang="hi">अंतर्यात्रा</span>
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="#dhyan"><span data-lang="en">Dhyan (Meditation)</span><span data-lang="hi">ध्यान</span></a></li>
+      <li><a href="#trataka"><span data-lang="en">Trataka (Gazing)</span><span data-lang="hi">त्राटक</span></a></li>
+      <li><a href="#japa"><span data-lang="en">Japa (Mantra)</span><span data-lang="hi">जप</span></a></li>
+      <li><a href="#comparison"><span data-lang="en">Comparison</span><span data-lang="hi">तुलना</span></a></li>
+    </ul>
+
+    <div class="controls">
+      <button class="btn" id="langBtn" onclick="toggleLanguage()" aria-label="Switch Language">
+        🌐 <span id="langLabel">हिंदी / EN</span>
+      </button>
+      <button class="btn" id="themeBtn" onclick="toggleTheme()" aria-label="Toggle Dark or Light Mode">
+        <span id="themeIcon">☀️</span>
+        <span id="themeText" data-lang="en">Light</span>
+        <span id="themeTextHi" data-lang="hi">लाइट</span>
+      </button>
     </div>
+  </header>
+
+  <!-- Hero Section -->
+  <div class="hero">
+    <!-- Sacred Geometry Animated SVG -->
+    <svg class="hero-mandala" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="100" cy="100" r="90" stroke="url(#grad1)" stroke-width="1.5" stroke-dasharray="4 4"/>
+      <circle cx="100" cy="100" r="70" stroke="url(#grad1)" stroke-width="1.5"/>
+      <polygon points="100,15 173,142 27,142" stroke="url(#grad1)" stroke-width="1.5" fill="rgba(245, 158, 11, 0.05)"/>
+      <polygon points="100,185 173,58 27,58" stroke="url(#grad1)" stroke-width="1.5" fill="rgba(6, 182, 212, 0.05)"/>
+      <circle cx="100" cy="100" r="28" stroke="#f59e0b" stroke-width="2"/>
+      <circle cx="100" cy="100" r="6" fill="#f59e0b"/>
+      <defs>
+        <linearGradient id="grad1" x1="0" y1="0" x2="200" y2="200" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#f59e0b"/>
+          <stop offset="0.5" stop-color="#ec4899"/>
+          <stop offset="1" stop-color="#06b6d4"/>
+        </linearGradient>
+      </defs>
+    </svg>
+
+    <h1>
+      <span data-lang="en">Complete Awareness of Dhyan, Trataka & Japa</span>
+      <span data-lang="hi">ध्यान, त्राटक और जप की संपूर्ण जागरूकता</span>
+    </h1>
+    <p>
+      <span data-lang="en">Explore the ancient yogic sciences of stillness, yogic ocular cleansing, and sonic vibration. Interactive tools, step-by-step methodologies, and authentic precautions in one place.</span>
+      <span data-lang="hi">स्थिरता, यौगिक नेत्र शुद्धि और मंत्र स्पंदन के प्राचीन विज्ञान का अन्वेषण करें। इंटरैक्टिव अभ्यास, चरण-दर-चरण विधि और सावधानियां एक ही स्थान पर।</span>
+    </p>
+
+    <div class="pill-nav">
+      <a href="#dhyan" class="btn btn-primary">
+        <span data-lang="en">1. Explore Dhyan</span>
+        <span data-lang="hi">१. ध्यान जानें</span>
+      </a>
+      <a href="#trataka" class="btn">
+        <span data-lang="en">2. Practice Trataka</span>
+        <span data-lang="hi">२. त्राटक अभ्यास</span>
+      </a>
+      <a href="#japa" class="btn">
+        <span data-lang="en">3. Interactive Japa Counter</span>
+        <span data-lang="hi">३. डिजिटल जप माला</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- ================= 1. DHYAN SECTION ================= -->
+  <section id="dhyan">
+    <div class="section-header">
+      <span class="section-badge">
+        <span data-lang="en">7th Limb of Ashtanga Yoga</span>
+        <span data-lang="hi">अष्टांग योग का सातवाँ अंग</span>
+      </span>
+      <h2>
+        <span data-lang="en">Dhyan (Meditation) — Unbroken Flow of Awareness</span>
+        <span data-lang="hi">ध्यान — जागरूकता का अखंड प्रवाह</span>
+      </h2>
+    </div>
+
+    <div class="practice-grid">
+      <!-- Animated Breath Guide -->
+      <div class="visual-stage">
+        <div class="dhyan-aura">
+          <div class="breath-ring"></div>
+          <div class="breath-ring"></div>
+          <!-- Meditator Vector Illustration -->
+          <svg class="meditator-svg" viewBox="0 0 120 120" fill="none">
+            <!-- Chakra points -->
+            <circle cx="60" cy="24" r="4" fill="#a855f7"/>
+            <circle cx="60" cy="48" r="4" fill="#22c55e"/>
+            <circle cx="60" cy="70" r="4" fill="#eab308"/>
+            <circle cx="60" cy="90" r="4" fill="#ef4444"/>
+            <!-- Silhouette -->
+            <circle cx="60" cy="26" r="12" stroke="#f59e0b" stroke-width="2.5"/>
+            <path d="M35 95 C25 80, 42 52, 60 52 C78 52, 95 80, 85 95 Z" stroke="#06b6d4" stroke-width="2.5" fill="rgba(6, 182, 212, 0.1)"/>
+            <path d="M22 96 C40 84, 80 84, 98 96" stroke="#f59e0b" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="breath-status" id="breathText">Inhale (पूरक)...</div>
+        <p style="font-size:0.85rem; color:var(--text-secondary); margin-top:0.5rem; text-align:center;">
+          <span data-lang="en">Sync your breath with the expanding aura circle (4s Inhale - 2s Hold - 6s Exhale)</span>
+          <span data-lang="hi">फैलते हुए आभा चक्र के साथ अपनी श्वास को मिलाएं (४ सेकंड श्वास लें - २ रोकें - ६ छोड़ें)</span>
+        </p>
+      </div>
+
+      <!-- Complete Dhyan Details -->
+      <div class="info-cards">
+        <div class="card">
+          <h3>
+            <span>🪷</span>
+            <span data-lang="en">What is Dhyan? (Essence)</span>
+            <span data-lang="hi">ध्यान क्या है? (मूल तत्व)</span>
+          </h3>
+          <p data-lang="en">
+            In Patanjali's Yoga Sutras, <em>"Tatra pratyaya-ekatanata dhyanam"</em> (3.2) defines Dhyan as an uninterrupted, oil-like flow of cognition toward the object of awareness. Unlike forced concentration (Dharana), Dhyan is effortless witnessing (Sakshi Bhava) where the observer, process of observing, and object merge into stillness.
+          </p>
+          <p data-lang="hi">
+            महर्षि पतंजलि के योग सूत्र के अनुसार, <em>"तत्र प्रत्ययैकतानता ध्यानम्"</em> अर्थात् ध्येय वस्तु में चित्त की एकतान (तेल की अखंड धारा के समान) वृत्ति का प्रवाह ही ध्यान है। यह विचारों से लड़ना नहीं, बल्कि साक्षी भाव से उन्हें देखना और शांत होना है।
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>
+            <span>🧘</span>
+            <span data-lang="en">4 Major Types of Dhyan</span>
+            <span data-lang="hi">ध्यान के ४ प्रमुख प्रकार</span>
+          </h3>
+          <ul data-lang="en">
+            <li><strong>Anapanasati (Breath Awareness):</strong> Observing the natural touch of incoming and outgoing breath at the nostrils without altering it.</li>
+            <li><strong>Vipassana (Insight Meditation):</strong> Non-reactive scanning of bodily sensations, realizing impermanence (Anicca).</li>
+            <li><strong>Chidakasha Dharana:</strong> Observing the dark mental screen behind closed eyes with total detachment.</li>
+            <li><strong>Nada Yoga Dhyan:</strong> Tuning inward to subtle internal unstruck sounds (Anahata Nada).</li>
+          </ul>
+          <ul data-lang="hi">
+            <li><strong>आनापानसति (श्वास जागरूकता):</strong> बिना किसी बदलाव के नासिका के अग्रभाग पर आती-जाती प्राकृतिक सांस का निरीक्षण करना।</li>
+            <li><strong>विपश्यना (अंतर्दृष्टि ध्यान):</strong> शरीर की संवेदनाओं को समता भाव से देखते हुए अनित्यता का बोध करना।</li>
+            <li><strong>चिदाकाश धारणा:</strong> बंद आंखों के सामने दिखने वाले अंधकार (अंतरिक्ष) को साक्षी भाव से देखना।</li>
+            <li><strong>नाद योग ध्यान:</strong> भीतर गूंजने वाली सूक्ष्म अनाहत ध्वनि पर ध्यान केंद्रित करना।</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>
+            <span>⚡</span>
+            <span data-lang="en">Step-by-Step Method & Science</span>
+            <span data-lang="hi">चरण-दर-चरण विधि एवं वैज्ञानिक लाभ</span>
+          </h3>
+          <ol data-lang="en">
+            <li><strong>Asana (Posture):</strong> Sit in Sukhasana, Siddhasana, or Padmasana with head, neck, and spine aligned vertically.</li>
+            <li><strong>Pratyahara (Withdrawal):</strong> Gently close your eyes and relax facial muscles, shoulders, and abdomen.</li>
+            <li><strong>Witnessing:</strong> Anchor your attention on the breath. When thoughts arise, label them gently and return to the breath without frustration.</li>
+            <li><strong>Neurobiology:</strong> Shifts brainwaves from high Beta to Alpha and Theta states, reduces amygdala reactivity, lowers cortisol, and increases prefrontal cortex thickness.</li>
+          </ol>
+          <ol data-lang="hi">
+            <li><strong>आसन:</strong> सुखासन, सिद्धासन या पद्मासन में रीढ़, गर्दन और सिर को एक सीध में रखकर बैठें।</li>
+            <li><strong>प्रत्याहार:</strong> आंखें कोमलता से बंद करें और चेहरे, कंधों तथा पेट की मांसपेशियों को ढीला छोड़ दें।</li>
+            <li><strong>साक्षी भाव:</strong> अपना ध्यान श्वास पर टिकाएं। विचार आने पर उनसे उलझें नहीं, बस पुनः श्वास पर लौट आएं।</li>
+            <li><strong>वैज्ञानिक लाभ:</strong> मस्तिष्क की तरंगों को अल्फा और थीटा अवस्था में लाता है, कोर्टिसोल (तनाव हार्मोन) घटाता है और एकाग्रता बढ़ाता है।</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 2. TRATAKA SECTION ================= -->
+  <section id="trataka">
+    <div class="section-header">
+      <span class="section-badge">
+        <span data-lang="en">Shatkarma — Yogic Purification</span>
+        <span data-lang="hi">षट्कर्म — यौगिक शुद्धि क्रिया</span>
+      </span>
+      <h2>
+        <span data-lang="en">Trataka (Steady Yogic Gazing)</span>
+        <span data-lang="hi">त्राटक — स्थिर नेत्र साधना</span>
+      </h2>
+    </div>
+
+    <div class="practice-grid">
+      <!-- Interactive Candle Flame Practice Box -->
+      <div class="visual-stage trataka-dark-stage">
+        <div class="candle-container">
+          <div class="flame-halo"></div>
+          <div class="bindu-point" title="Focus Here (Target Tip)"></div>
+          <svg class="flame-svg" viewBox="0 0 80 120">
+            <!-- Outer Flame -->
+            <path d="M40 5 C40 5, 72 45, 72 78 C72 100, 58 115, 40 115 C22 115, 8 100, 8 78 C8 45, 40 5, 40 5 Z" fill="url(#flameOuter)"/>
+            <!-- Inner Flame -->
+            <path d="M40 32 C40 32, 58 60, 58 82 C58 98, 50 110, 40 110 C30 110, 22 98, 22 82 C22 60, 40 32, 40 32 Z" fill="#fef08a"/>
+            <!-- Blue Base & Wick -->
+            <ellipse cx="40" cy="106" rx="10" ry="7" fill="#38bdf8" opacity="0.8"/>
+            <line x1="40" y1="102" x2="40" y2="118" stroke="#1e293b" stroke-width="3"/>
+            <defs>
+              <linearGradient id="flameOuter" x1="40" y1="5" x2="40" y2="115" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#fde047"/>
+                <stop offset="60%" stop-color="#f97316"/>
+                <stop offset="100%" stop-color="#dc2626"/>
+              </linearGradient>
+            </defs>
+          </svg>
+          <div class="diya-base"></div>
+        </div>
+
+        <div style="margin-top: 1.5rem; text-align: center;">
+          <div style="font-size: 1.4rem; font-weight: 700; color: #fbbf24;" id="tratakaTimer">00:00</div>
+          <div style="display:flex; gap:0.6rem; margin-top:0.75rem; justify-content:center;">
+            <button class="btn btn-primary" onclick="toggleTratakaTimer()" id="tratakaBtn">
+              <span data-lang="en">Start Gazing Timer</span>
+              <span data-lang="hi">त्राटक टाइमर शुरू करें</span>
+            </button>
+            <button class="btn" onclick="resetTratakaTimer()" style="background:#1e293b; color:#fff;">Reset</button>
+          </div>
+          <p style="font-size: 0.8rem; color: #94a3b8; margin-top: 0.6rem; max-width: 300px;">
+            <span data-lang="en">Gaze effortlessly at the bright white dot at the tip of the wick without blinking.</span>
+            <span data-lang="hi">बिना पलक झपकाए बाती के शीर्ष पर चमकते सफेद बिंदु को सहजता से देखें।</span>
+          </p>
+        </div>
+      </div>
+
+      <!-- Complete Trataka Details -->
+      <div class="info-cards">
+        <div class="card">
+          <h3>
+            <span>🔥</span>
+            <span data-lang="en">Bahiranga & Antaranga Trataka</span>
+            <span data-lang="hi">बहिरंग और अंतरंग त्राटक</span>
+          </h3>
+          <p data-lang="en">
+            Described in the <em>Hatha Yoga Pradipika</em> (2.31), Trataka is gazing steadily at a tiny point until tears flow. It serves as the bridge between Hatha Yoga (physical purification) and Raja Yoga (mental absorption):
+          </p>
+          <ul data-lang="en" style="margin-top:0.5rem;">
+            <li><strong>Bahiranga (External) Trataka:</strong> Gazing at an external Ghee lamp flame, black Bindu (dot) on a white wall, crystal, or Shivalinga.</li>
+            <li><strong>Antaranga (Internal) Trataka:</strong> Closing the eyes immediately after external gazing and holding the luminous after-image steadily at the <em>Ajna Chakra</em> (eyebrow center).</li>
+          </ul>
+          <p data-lang="hi">
+            <em>हठयोग प्रदीपिका</em> के अनुसार, बिना पलक झपकाए किसी सूक्ष्म बिंदु को तब तक देखना जब तक आंखों से आंसू न आ जाएं, त्राटक कहलाता है। इसके दो चरण हैं:
+          </p>
+          <ul data-lang="hi" style="margin-top:0.5rem;">
+            <li><strong>बहिरंग त्राटक:</strong> घी के दीपक की लौ, सफेद दीवार पर काले बिंदु या किसी प्रतीक को एकटक देखना।</li>
+            <li><strong>अंतरंग त्राटक:</strong> आंखें बंद करके दीपक के प्रतिबिंब (After-image) को आज्ञा चक्र (भौंहों के बीच) पर स्थिर रखना।</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>
+            <span>📏</span>
+            <span data-lang="en">Exact Setup & Practice Protocol</span>
+            <span data-lang="hi">सटीक दूरी, नियम और अभ्यास विधि</span>
+          </h3>
+          <ol data-lang="en">
+            <li><strong>Environment:</strong> Pitch-dark, draft-free room so the candle or ghee flame does not flicker.</li>
+            <li><strong>Distance & Height:</strong> Place the flame exactly at <strong>eye level</strong>, at an arm's length (<strong>1.5 to 2 meters / 3–5 feet</strong> away).</li>
+            <li><strong>Phase 1 (Gazing):</strong> Gaze at the top of the wick (middle of the flame) for 1–3 minutes without blinking. Keep eyes relaxed, do not strain.</li>
+            <li><strong>Phase 2 (Inner Hold):</strong> Gently close eyes, perform <em>Palming</em> (rub palms warm and cup over eyes), and watch the inner glowing dot at the third eye until it dissolves.</li>
+          </ol>
+          <ol data-lang="hi">
+            <li><strong>वातावरण:</strong> अंधेरा और हवा रहित कमरा चुनें ताकि दीपक की लौ बिल्कुल न कांपे।</li>
+            <li><strong>दूरी और ऊंचाई:</strong> दीपक को ठीक अपनी <strong>आंखों के स्तर (Eye Level)</strong> पर और शरीर से <strong>३ से ५ फीट</strong> की दूरी पर रखें।</li>
+            <li><strong>प्रथम चरण:</strong> बिना पलक झपकाए बाती के ऊपरी सिरे को १ से ३ मिनट तक सहजता से देखें।</li>
+            <li><strong>द्वितीय चरण:</strong> आंखें बंद करें, हथेलियों को रगड़कर आंखों पर रखें (पामिंग) और भीतर दिखने वाले प्रकाश बिंदु को भ्रूमध्य में देखें।</li>
+          </ol>
+
+          <div class="warning-box">
+            <strong data-lang="en">⚠️ Crucial Contraindications (Precautions):</strong>
+            <strong data-lang="hi">⚠️ महत्वपूर्ण सावधानियां (किन्हें नहीं करना चाहिए):</strong>
+            <p data-lang="en">Avoid candle flame Trataka if you have glaucoma, recent cataract/LASIK surgery, retinal detachment, severe dry eyes, migraine, or epilepsy. Remove spectacles/contact lenses before practice. Finish by splashing cool water gently or palming.</p>
+            <p data-lang="hi">यदि आपको ग्लूकोमा (काला मोतिया), हाल ही में आंखों की सर्जरी, रेटिना की समस्या, गंभीर माइग्रेन या मिर्गी (Epilepsy) है, तो अग्नि त्राटक न करें। अभ्यास के समय चश्मा या लेंस उतार दें।</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 3. JAPA SECTION ================= -->
+  <section id="japa">
+    <div class="section-header">
+      <span class="section-badge">
+        <span data-lang="en">Mantra Vigyan — Sonic Alchemy</span>
+        <span data-lang="hi">मंत्र विज्ञान — ध्वनि और स्पंदन</span>
+      </span>
+      <h2>
+        <span data-lang="en">Japa (Sacred Mantra Repetition)</span>
+        <span data-lang="hi">जप — पवित्र मंत्र आवृत्ति</span>
+      </h2>
+    </div>
+
+    <div class="practice-grid">
+      <!-- Interactive 108 Bead Mala Counter -->
+      <div class="visual-stage">
+        <div class="mala-wheel-wrap" onclick="incrementJapa()">
+          <svg class="mala-svg" id="malaSvg" viewBox="0 0 240 240">
+            <!-- Sumeru Bead at top -->
+            <circle cx="120" cy="14" r="9" fill="#ef4444" stroke="#fde047" stroke-width="2"/>
+            <!-- Dynamic beads generated by JS -->
+            <g id="beadsGroup"></g>
+          </svg>
+          <div class="mala-center-counter">
+            <div style="font-size:0.75rem; text-transform:uppercase; color:var(--text-secondary);">Bead / मनका</div>
+            <div class="mala-count-num" id="japaCount">0</div>
+            <div style="font-size:0.8rem; color:var(--accent-gold);">/ 108</div>
+            <div style="font-size:0.75rem; margin-top:4px; color:var(--text-secondary);">
+              Malas: <strong id="malaRounds">0</strong>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex; gap:0.75rem; margin-top:1.25rem;">
+          <button class="btn btn-primary" onclick="incrementJapa()">
+            🙏 <span data-lang="en">Chant (+1 Bead)</span><span data-lang="hi">जप करें (+१ मनका)</span>
+          </button>
+          <button class="btn" onclick="resetJapa()">
+            ↺ <span data-lang="en">Reset</span><span data-lang="hi">रीसेट</span>
+          </button>
+        </div>
+        <p style="font-size:0.82rem; color:var(--text-secondary); margin-top:0.65rem; text-align:center;">
+          <span data-lang="en">Click the Mala or button for each mantra repetition. At 108 (Sumeru bead), the mala automatically reverses!</span>
+          <span data-lang="hi">प्रत्येक मंत्र के साथ माला या बटन दबाएं। १०८ पूरे होने (सुमेरु मनका) पर माला स्वतः पलट जाती है!</span>
+        </p>
+      </div>
+
+      <!-- Complete Japa Details -->
+      <div class="info-cards">
+        <div class="card">
+          <h3>
+            <span>📿</span>
+            <span data-lang="en">3 Levels of Japa Progression</span>
+            <span data-lang="hi">जप के ३ क्रमिक स्तर</span>
+          </h3>
+          <p data-lang="en">
+            Etymologically, <em>"Ja"</em> destroys the cycle of birth/death and <em>"Pa"</em> purifies inner impressions (Samskaras). Yogic scriptures classify Japa into three ascending tiers of subtlety:
+          </p>
+          <ul data-lang="en" style="margin-top:0.5rem;">
+            <li><strong>1. Vaikhari Japa (Audible):</strong> Chanting aloud clearly. Ideal for beginners to cut through external distractions and energize the physical environment.</li>
+            <li><strong>2. Upanshu Japa (Whispering):</strong> Only the lips and tongue move gently; no outside person can hear the sound. 10x more potent than Vaikhari.</li>
+            <li><strong>3. Manasika Japa (Mental):</strong> Purely mental repetition synchronized with the breath or heartbeat without tongue movement. Considered 1000x more powerful as it leads directly into Dhyan.</li>
+          </ul>
+          <p data-lang="hi">
+            शास्त्रों में मंत्र जप को सूक्ष्मता के आधार पर तीन मुख्य श्रेणियों में बांटा गया है:
+          </p>
+          <ul data-lang="hi" style="margin-top:0.5rem;">
+            <li><strong>१. वैखरी जप (सस्वर):</strong> स्पष्ट आवाज में बोलकर जप करना। यह प्रारंभिक साधकों के लिए भटकते मन को रोकने में अत्यंत सहायक है।</li>
+            <li><strong>२. उपांशु जप (उपांशु):</strong> जिसमें केवल होंठ और जीभ धीरे-धीरे हिलते हैं, पर ध्वनि बाहर सुनाई नहीं देती। यह वैखरी से १० गुना अधिक फलदायी है।</li>
+            <li><strong>३. मानसिक जप (मौन):</strong> बिना जीभ हिलाए केवल मन और श्वास के साथ मंत्र का स्मरण करना। यह सर्वाधिक शक्तिशाली है और सीधे ध्यान में ले जाता है।</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>
+            <span>✨</span>
+            <span data-lang="en">Mala Rules & Significance of 108</span>
+            <span data-lang="hi">माला के नियम और १०८ का रहस्य</span>
+          </h3>
+          <ul data-lang="en">
+            <li><strong>Why 108 Beads?</strong> Represents 27 Nakshatras × 4 Padas = 108 cosmic steps; also the distance of the Sun and Moon from Earth is approximately 108 times their respective diameters.</li>
+            <li><strong>Finger Placement:</strong> Drape the mala over the <strong>middle finger</strong> (Madhyama) and rotate beads inward using the <strong>thumb</strong>. Keep the <strong>index finger (Tarjani) strictly away</strong> (represents ego).</li>
+            <li><strong>Sumeru Rule:</strong> Never cross over the 109th head bead (Guru/Sumeru bead). When you reach it, turn the mala around and begin the next round in reverse.</li>
+            <li><strong>Mala Types:</strong> <em>Rudraksha</em> (Shiva/Pranic awakening), <em>Tulsi</em> (Vishnu/Devotion & peace), <em>Sphatik/Crystal</em> (Cooling mind & Saraswati/Devi mantras).</li>
+          </ul>
+          <ul data-lang="hi">
+            <li><strong>१०८ मनके क्यों?</strong> ज्योतिष के अनुसार २७ नक्षत्र × ४ चरण = १०८। सूर्य और पृथ्वी के बीच की दूरी भी सूर्य के व्यास की लगभग १०८ गुना है।</li>
+            <li><strong>उंगलियों का नियम:</strong> माला को <strong>मध्यमा उंगली</strong> पर रखें और <strong>अंगूठे</strong> की सहायता से मनके अपनी ओर फेरें। <strong>तर्जनी उंगली</strong> (अहंकार का प्रतीक) का स्पर्श माला से न होने दें।</li>
+            <li><strong>सुमेरु का नियम:</strong> १०८ मनकों के बाद आने वाले १०९वें मुख्य मनके (सुमेरु/गुरु मनका) को कभी लांघना नहीं चाहिए। वहां पहुंचकर माला को घुमा लें।</li>
+            <li><strong>माला चयन:</strong> <em>रुद्राक्ष</em> (ऊर्जा और शिव मंत्र), <em>तुलसी</em> (भक्ति और विष्णु/राम मंत्र), <em>स्फटिक</em> (मन की शांति और देवी मंत्र)।</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 4. COMPARISON & SYNERGY SECTION ================= -->
+  <section id="comparison">
+    <div class="section-header">
+      <span class="section-badge">
+        <span data-lang="en">Complete Integration</span>
+        <span data-lang="hi">संपूर्ण समन्वय</span>
+      </span>
+      <h2>
+        <span data-lang="en">How Japa, Trataka & Dhyan Work Together</span>
+        <span data-lang="hi">जप, त्राटक और ध्यान का आपसी संबंध</span>
+      </h2>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th><span data-lang="en">Aspect</span><span data-lang="hi">आयाम</span></th>
+            <th><span data-lang="en">Japa (Mantra)</span><span data-lang="hi">जप (मंत्र साधना)</span></th>
+            <th><span data-lang="en">Trataka (Gazing)</span><span data-lang="hi">त्राटक (नेत्र साधना)</span></th>
+            <th><span data-lang="en">Dhyan (Meditation)</span><span data-lang="hi">ध्यान (साक्षी साधना)</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong><span data-lang="en">Primary Sense Used</span><span data-lang="hi">प्रमुख इंद्रिय</span></strong></td>
+            <td><span data-lang="en">Auditory / Vocal Vibration (Shabda)</span><span data-lang="hi">ध्वनि और मानसिक स्पंदन (शब्द)</span></td>
+            <td><span data-lang="en">Visual / Optic Nerve (Drishti)</span><span data-lang="hi">नेत्र और दृष्टि केंद्र (रूप/अग्नि)</span></td>
+            <td><span data-lang="en">Trans-sensory Witnessing (Chitta)</span><span data-lang="hi">इंद्रियातीत साक्षी चैतन्य (चित्त)</span></td>
+          </tr>
+          <tr>
+            <td><strong><span data-lang="en">Primary Goal</span><span data-lang="hi">मुख्य उद्देश्य</span></strong></td>
+            <td><span data-lang="en">Channeling emotional & discursive mind into a single sacred rhythm</span><span data-lang="hi">भटकते विचारों को एक पवित्र लय और भाव में बांधना</span></td>
+            <td><span data-lang="en">Stopping rapid eye movement (REM) to arrest mental restlessness</span><span data-lang="hi">पुतलियों की चंचलता रोककर मन को तुरंत एकाग्र करना</span></td>
+            <td><span data-lang="en">Effortless stillness, self-realization & inner peace</span><span data-lang="hi">सहज शून्यता, आत्म-बोध और गहन आंतरिक शांति</span></td>
+          </tr>
+          <tr>
+            <td><strong><span data-lang="en">Ideal Sequence</span><span data-lang="hi">आदर्श क्रम</span></strong></td>
+            <td><span data-lang="en"><strong>Step 1 (10 Mins):</strong> Calms daily mental chatter</span><span data-lang="hi"><strong>चरण १ (१० मिनट):</strong> दिनभर के मानसिक शोर को शांत करता है</span></td>
+            <td><span data-lang="en"><strong>Step 2 (5 Mins):</strong> Sharpens laser-like focus at Ajna Chakra</span><span data-lang="hi"><strong>चरण २ (५ मिनट):</strong> आज्ञा चक्र पर तीव्र एकाग्रता जगाता है</span></td>
+            <td><span data-lang="en"><strong>Step 3 (15 Mins):</strong> Rests deeply in the silence created</span><span data-lang="hi"><strong>चरण ३ (१५ मिनट):</strong> निर्मित मौन और स्थिरता में गहरा उतरता है</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <footer>
+    <p data-lang="en">Designed for Complete Spiritual & Yogic Awareness • Practice with patience, regularity (Abhyasa), and detachment (Vairagya).</p>
+    <p data-lang="hi">संपूर्ण आध्यात्मिक और यौगिक जागरूकता हेतु निर्मित • धैर्य, निरंतर अभ्यास और वैराग्य के साथ साधना करें।</p>
+  </footer>
+
+  <!-- Interactive Scripts -->
+  <script>
+    // 1. Language Toggle (English / Hindi)
+    let currentLang = 'en';
+    function toggleLanguage() {
+      const body = document.body;
+      const langLabel = document.getElementById('langLabel');
+      if (currentLang === 'en') {
+        body.classList.remove('lang-en');
+        body.classList.add('lang-hi');
+        currentLang = 'hi';
+        langLabel.textContent = 'English / हिं';
+      } else {
+        body.classList.remove('lang-hi');
+        body.classList.add('lang-en');
+        currentLang = 'en';
+        langLabel.textContent = 'हिंदी / EN';
+      }
+      updateBreathLabel();
+    }
+
+    // 2. Dark / Light Theme Toggle
+    function toggleTheme() {
+      const html = document.documentElement;
+      const currentTheme = html.getAttribute('data-theme');
+      const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', nextTheme);
+
+      document.getElementById('themeIcon').textContent = nextTheme === 'dark' ? '☀️' : '🌙';
+      document.getElementById('themeText').textContent = nextTheme === 'dark' ? 'Light' : 'Dark';
+      document.getElementById('themeTextHi').textContent = nextTheme === 'dark' ? 'लाइट' : 'डार्क';
+    }
+
+    // 3. Dhyan Breathing Cycle Text Synchronizer
+    let breathPhase = 0; // 0: Inhale, 1: Hold, 2: Exhale
+    function updateBreathLabel() {
+      const el = document.getElementById('breathText');
+      const phasesEn = ['Inhale Slowly (पूरक)...', 'Hold Gently (कुंभक)...', 'Exhale Completely (रेचक)...'];
+      const phasesHi = ['धीरे-धीरे श्वास लें (पूरक)...', 'सहजता से रोकें (कुंभक)...', 'पूरी तरह श्वास छोड़ें (रेचक)...'];
+      el.textContent = currentLang === 'en' ? phasesEn[breathPhase] : phasesHi[breathPhase];
+    }
+
+    setInterval(() => {
+      breathPhase = (breathPhase + 1) % 3;
+      updateBreathLabel();
+    }, 4000);
+
+    // 4. Trataka Gazing Timer
+    let tratakaSeconds = 0;
+    let tratakaInterval = null;
+
+    function toggleTratakaTimer() {
+      const btn = document.getElementById('tratakaBtn');
+      if (tratakaInterval) {
+        clearInterval(tratakaInterval);
+        tratakaInterval = null;
+        btn.innerHTML = currentLang === 'en' ? 'Resume Timer' : 'टाइमर जारी रखें';
+      } else {
+        tratakaInterval = setInterval(() => {
+          tratakaSeconds++;
+          const mins = String(Math.floor(tratakaSeconds / 60)).padStart(2, '0');
+          const secs = String(tratakaSeconds % 60).padStart(2, '0');
+          document.getElementById('tratakaTimer').textContent = `${mins}:${secs}`;
+        }, 1000);
+        btn.innerHTML = currentLang === 'en' ? 'Pause Timer' : 'टाइमर रोकें';
+      }
+    }
+
+    function resetTratakaTimer() {
+      clearInterval(tratakaInterval);
+      tratakaInterval = null;
+      tratakaSeconds = 0;
+      document.getElementById('tratakaTimer').textContent = '00:00';
+      document.getElementById('tratakaBtn').innerHTML = currentLang === 'en'
+        ? '<span>Start Gazing Timer</span>'
+        : '<span>त्राटक टाइमर शुरू करें</span>';
+    }
+
+    // 5. Japa Mala SVG Bead Generator & Counter
+    const beadsGroup = document.getElementById('beadsGroup');
+    const visualBeads = 27; // 27 visual beads representing 108 (4x)
+    const radius = 98;
+    const center = 120;
+
+    for (let i = 1; i < visualBeads; i++) {
+      const angle = (i / visualBeads) * 2 * Math.PI - Math.PI / 2;
+      const x = center + radius * Math.cos(angle);
+      const y = center + radius * Math.sin(angle);
+      const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+      circle.setAttribute('cx', x);
+      circle.setAttribute('cy', y);
+      circle.setAttribute('r', '6');
+      circle.setAttribute('fill', '#b45309');
+      circle.setAttribute('stroke', '#f59e0b');
+      circle.setAttribute('stroke-width', '1.5');
+      beadsGroup.appendChild(circle);
+    }
+
+    let japaCounter = 0;
+    let malaRounds = 0;
+    let rotationDeg = 0;
+    let direction = 1;
+
+    function incrementJapa() {
+      japaCounter++;
+      rotationDeg += direction * (360 / 27);
+      document.getElementById('malaSvg').style.transform = `rotate(${rotationDeg}deg)`;
+
+      if (japaCounter >= 108) {
+        malaRounds++;
+        japaCounter = 0;
+        direction *= -1; // Reverse at Sumeru Bead
+        document.getElementById('malaRounds').textContent = malaRounds;
+      }
+      document.getElementById('japaCount').textContent = japaCounter;
+    }
+
+    function resetJapa() {
+      japaCounter = 0;
+      malaRounds = 0;
+      rotationDeg = 0;
+      document.getElementById('japaCount').textContent = '0';
+      document.getElementById('malaRounds').textContent = '0';
+      document.getElementById('malaSvg').style.transform = 'rotate(0deg)';
+    }
+  </script>
 </body>
 </html>
